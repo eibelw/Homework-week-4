@@ -1,23 +1,15 @@
 const array = [];
-
-for (let arr = 0; arr < 100; arr++) {
-  const randomnumber = Math.floor(Math.random() * 51);
-  array.push(randomnumber);
-}
-
 const arrayganjil = [];
 const arraygenap = [];
 
-let i = 0;
-
-while (arraygenap.length < 50 && arrayganjil.length < 50) {
-  const angka = array[i];
-  if (angka % 2 === 0) {
-    arraygenap.push(angka);
+for (let i = 0; i < 100; i++) {
+  const randomnumber = Math.floor(Math.random() * 51);
+  array.push(randomnumber);
+  if (i % 2 === 0) {
+    arraygenap.push(randomnumber);
   } else {
-    arrayganjil.push(angka);
+    arrayganjil.push(randomnumber);
   }
-  i++;
 }
 
 console.log("Array:", array);
@@ -63,12 +55,62 @@ let totalganjil = 0;
 let totalgenap = 0;
 
 for (i = 0; i < arrayganjil.length; i++) {
-  totalganjil += 1;
+  totalganjil += arrayganjil[i];
 }
 
 for (i = 0; i < arraygenap.length; i++) {
-  totalgenap += 1;
+  totalgenap += arraygenap[i];
 }
 
 console.log("Nilai Total Array Ganjil:", totalganjil);
 console.log("Nilai Total Array Genap:", totalgenap);
+
+let avgganjil = totalganjil / arrayganjil.length;
+console.log("Nilai Rata-rata Array Ganjil:", avgganjil);
+
+let avggenap = totalgenap / arraygenap.length;
+console.log("Nilai Rata-rata Array Genap:", avggenap);
+
+function bandingmin() {
+  if (minganjil > mingenap) {
+    return "Hasil Perbandingan Nilai Min Array Ganjil Lebih Besar Dari Array Genap";
+  } else if (minganjil < mingenap) {
+    return "Hasil Perbandingan Nilai Min Array Ganjil Lebih Kecil Dari Array Genap";
+  } else {
+    return "Hasil Perbandingan Nilai Min Array Ganjil Sama Dengan Array Genap";
+  }
+}
+
+function bandingmax() {
+  if (maxganjil > maxgenap) {
+    return "Hasil Perbandingan Nilai Max Array Ganjil Lebih Besar Dari Array Genap";
+  } else if (maxganjil < maxgenap) {
+    return "Hasil Perbandingan Nilai Max Array Ganjil Lebih Kecil Dari Array Genap";
+  } else {
+    return "Hasil Perbandingan Nilai Max Array Ganjil Sama Dengan Array Genap";
+  }
+}
+
+function bandingtotal() {
+  if (totalganjil > totalgenap) {
+    return "Hasil Perbandingan Nilai Total Array Ganjil Lebih Besar Dari Array Genap";
+  } else if (totalganjil < totalgenap) {
+    return "Hasil Perbandingan Nilai Total Array Ganjil Lebih Kecil Dari Array Genap";
+  } else {
+    return "Hasil Perbandingan Nilai Total Array Ganjil Sama Dengan Array Genap";
+  }
+}
+
+function bandingavg() {
+  return (nilai =
+    avgganjil > avggenap
+      ? "Hasil Perbandingan Nilai Rata-rata Array Ganjil Lebih Besar Dari Array Genap"
+      : avgganjil < avggenap
+      ? "Hasil Perbandingan Nilai Rata-rata Array Ganjil Lebih Kecil Dari Array Genap"
+      : "Hasil Perbandingan Nilai Rata-rata Array Ganjil Sama Dengan Array Genap");
+}
+
+console.log(bandingmin(minganjil, mingenap));
+console.log(bandingmax(maxganjil, maxgenap));
+console.log(bandingtotal(totalganjil, totalgenap));
+console.log(bandingavg(avgganjil, avggenap));
